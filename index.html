@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Institute Management System</title>
+    <title>School Management - Neumorphism</title>
     <style>
-        /* बेसिक रीसेट और फॉन्ट */
+        /* Basic Reset */
         * {
             margin: 0;
             padding: 0;
@@ -13,266 +13,287 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
+        /* Neumorphism Base Color */
         body {
-            background-color: #f4f7f6;
-            color: #333;
+            background-color: #e0e5ec;
+            color: #4d4d4d;
+            height: 100vh;
+            overflow-x: hidden;
         }
 
-        /* नेविगेशन बार डिज़ाइन */
+        /* --- Neumorphism Reusable Classes --- */
+        .neu-card {
+            background: #e0e5ec;
+            border-radius: 20px;
+            box-shadow: 9px 9px 16px rgb(163,177,198,0.6), 
+                       -9px -9px 16px rgba(255,255,255, 0.5);
+        }
+
+        .neu-btn {
+            background: #e0e5ec;
+            border: none;
+            outline: none;
+            border-radius: 10px;
+            padding: 10px 20px;
+            font-weight: bold;
+            color: #333;
+            cursor: pointer;
+            box-shadow: 5px 5px 10px #a3b1c6, 
+                       -5px -5px 10px #ffffff;
+            transition: all 0.2s ease;
+        }
+
+        .neu-btn:hover {
+            color: #0056b3;
+        }
+
+        .neu-btn:active {
+            /* Button dabane par andar dhans jayega (Inset Shadow) */
+            box-shadow: inset 5px 5px 10px #a3b1c6, 
+                        inset -5px -5px 10px #ffffff;
+        }
+
+        .neu-input {
+            width: 100%;
+            background: #e0e5ec;
+            border: none;
+            outline: none;
+            border-radius: 10px;
+            padding: 15px;
+            color: #333;
+            font-size: 14px;
+            /* Input field hamesha andar dhansa hua dikhega */
+            box-shadow: inset 6px 6px 10px #a3b1c6, 
+                        inset -6px -6px 10px #ffffff;
+        }
+
+        .neu-input::placeholder {
+            color: #999;
+        }
+
+        /* --- Landing Page Styles --- */
+        #landing-page {
+            display: block;
+            padding: 20px;
+        }
+
         header {
-            background-color: #2c3e50;
-            color: #fff;
-            padding: 15px 50px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-
-        header h1 {
-            font-size: 24px;
-            letter-spacing: 1px;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 20px;
-        }
-
-        nav ul li a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: 500;
-            padding: 8px 15px;
-            border-radius: 4px;
-            transition: background 0.3s;
-        }
-
-        nav ul li a:hover {
-            background-color: #34495e;
-        }
-
-        .login-btn {
-            background-color: #3498db;
-            color: white;
-            padding: 8px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        .login-btn:hover {
-            background-color: #2980b9;
-        }
-
-        /* हीरो सेक्शन (Main Banner) */
-        .hero {
-            text-align: center;
-            padding: 80px 20px;
-            background: linear-gradient(135deg, #3498db, #2c3e50);
-            color: white;
-        }
-
-        .hero h2 {
-            font-size: 40px;
-            margin-bottom: 15px;
-        }
-
-        .hero p {
-            font-size: 18px;
-            margin-bottom: 30px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .hero button {
-            padding: 12px 30px;
-            font-size: 16px;
-            background-color: #e74c3c;
-            color: white;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            font-weight: bold;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-            transition: transform 0.3s;
-        }
-
-        .hero button:hover {
-            transform: scale(1.05);
-            background-color: #c0392b;
-        }
-
-        /* फीचर्स सेक्शन (Grid Layout for multiple cards) */
-        .features-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 60px 20px;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 32px;
-            color: #2c3e50;
+            padding: 20px 40px;
             margin-bottom: 40px;
         }
 
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
+        .logo h1 {
+            color: #0056b3;
+            font-size: 24px;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 4px rgba(163,177,198,0.6), -2px -2px 4px rgba(255,255,255, 0.5);
         }
 
-        .card {
-            background-color: white;
-            padding: 25px 20px;
-            border-radius: 10px;
+        .header-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .hero-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 60vh;
+        }
+
+        .hero-box {
+            padding: 60px;
             text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-            transition: transform 0.3s, box-shadow 0.3s;
-            border-bottom: 4px solid #3498db;
+            max-width: 800px;
         }
 
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 25px rgba(0,0,0,0.15);
+        .hero-box h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #333;
         }
 
-        .card .icon {
-            font-size: 40px;
-            margin-bottom: 15px;
-        }
-
-        .card h3 {
-            color: #2c3e50;
-            margin-bottom: 10px;
+        .hero-box p {
             font-size: 18px;
+            color: #666;
+            margin-bottom: 30px;
         }
 
-        .card p {
-            color: #7f8c8d;
-            font-size: 14px;
-            line-height: 1.5;
+        /* --- Login Page Styles --- */
+        #login-page {
+            display: none;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
-        /* फुटर */
-        footer {
-            background-color: #2c3e50;
-            color: white;
+        .login-box {
+            width: 380px;
+            padding: 40px;
             text-align: center;
-            padding: 20px;
-            margin-top: 40px;
         }
+
+        .login-box h2 {
+            margin-bottom: 30px;
+            color: #0056b3;
+            font-size: 28px;
+        }
+
+        .input-group {
+            margin-bottom: 25px;
+            text-align: left;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            padding-left: 5px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            font-size: 16px;
+            color: #0056b3;
+            margin-top: 10px;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 25px;
+            color: #666;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .back-btn:hover {
+            color: #333;
+        }
+
+        /* --- Dashboard Page Styles --- */
+        #dashboard-page {
+            display: none;
+            padding: 40px;
+        }
+
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            margin-bottom: 40px;
+        }
+
+        .dashboard-content {
+            padding: 40px;
+            min-height: 50vh;
+        }
+
     </style>
 </head>
 <body>
 
-    <!-- नेविगेशन बार -->
-    <header>
-        <h1>🎓 EduManage</h1>
-        <nav>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#features">Features</a></li>
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </nav>
-        <button class="login-btn">Login Portal</button>
-    </header>
-
-    <!-- हीरो सेक्शन -->
-    <section class="hero">
-        <h2>Smart Institute Management System</h2>
-        <p>A complete digital solution for your college. Streamline academics, administration, and communication all in one centralized portal.</p>
-        <button>Explore Dashboard</button>
-    </section>
-
-    <!-- फीचर्स सेक्शन -->
-    <section class="features-container" id="features">
-        <h2 class="section-title">Core Modules</h2>
-        
-        <div class="features">
-            <!-- 1. Student List -->
-            <div class="card">
-                <div class="icon">📋</div>
-                <h3>Student Directory</h3>
-                <p>Maintain and manage a complete, searchable list of all enrolled students and their basic profiles.</p>
+    <div id="landing-page">
+        <header class="neu-card">
+            <div class="logo">
+                <h1>SCHOOL MANAGEMENT</h1>
             </div>
-
-            <!-- 2. Attendance -->
-            <div class="card">
-                <div class="icon">📅</div>
-                <h3>Attendance</h3>
-                <p>Track daily student and staff attendance digitally with automated monthly reports.</p>
+            <div class="header-buttons">
+                <button class="neu-btn">Apply Now</button>
+                <button class="neu-btn">Enquire Now</button>
+                <button class="neu-btn" style="color: #fd7e14;" onclick="showPage('login-page')">👨‍🏫 Teacher Login</button>
             </div>
+        </header>
 
-            <!-- 3. Course & Batch -->
-            <div class="card">
-                <div class="icon">🏫</div>
-                <h3>Course & Batches</h3>
-                <p>Organize academic structures by assigning students to specific courses, years, and batches.</p>
-            </div>
-
-            <!-- 4. Lesson Planning -->
-            <div class="card">
-                <div class="icon">📘</div>
-                <h3>Lesson Planning</h3>
-                <p>Empower teachers to upload syllabus timelines, study materials, and daily lesson plans.</p>
-            </div>
-
-            <!-- 5. Student Performance -->
-            <div class="card">
-                <div class="icon">📈</div>
-                <h3>Performance</h3>
-                <p>Analyze academic growth with detailed metrics, results tracking, and progress charts.</p>
-            </div>
-
-            <!-- 6. Fees & Scholarship -->
-            <div class="card">
-                <div class="icon">🏆</div>
-                <h3>Fees & Scholarship</h3>
-                <p>Manage fee collections, track pending dues, and process student scholarship applications.</p>
-            </div>
-
-            <!-- 7. Certificate Management -->
-            <div class="card">
-                <div class="icon">🎓</div>
-                <h3>Certificates</h3>
-                <p>Automatically generate and issue transfer certificates, mark sheets, and degree documents.</p>
-            </div>
-
-            <!-- 8. Event Management -->
-            <div class="card">
-                <div class="icon">🎪</div>
-                <h3>Event Management</h3>
-                <p>Schedule college fests, seminars, and holidays in the centralized institutional calendar.</p>
-            </div>
-
-            <!-- 9. Chat System -->
-            <div class="card">
-                <div class="icon">💬</div>
-                <h3>Internal Chat</h3>
-                <p>Secure communication channel for students to resolve queries with teachers directly.</p>
-            </div>
-
-            <!-- 10. Email Notifications -->
-            <div class="card">
-                <div class="icon">📧</div>
-                <h3>Email Alerts</h3>
-                <p>Send automated OTPs, fee reminders, and important announcements directly via email.</p>
+        <div class="hero-section">
+            <div class="hero-box neu-card">
+                <h2>Aim High With Interactive Education</h2>
+                <p>Join our premium School Management Program. Designed for excellence, built for the future.</p>
+                <button class="neu-btn" style="padding: 15px 30px; font-size: 16px; color: #0056b3;">Explore Courses</button>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- फुटर -->
-    <footer>
-        <p>&copy; 2026 EduManage System | Developed for College Project</p>
-    </footer>
+    <div id="login-page">
+        <div class="login-box neu-card">
+            <h2>Teacher Login</h2>
+            <form onsubmit="handleLogin(event)">
+                <div class="input-group">
+                    <label>Email Address</label>
+                    <input type="email" id="email" class="neu-input" placeholder="Enter your email" required>
+                </div>
+                <div class="input-group">
+                    <label>Password</label>
+                    <input type="password" id="password" class="neu-input" placeholder="Enter your password" required>
+                </div>
+                <button type="submit" class="neu-btn submit-btn">Secure Login</button>
+                <a href="#" class="back-btn" onclick="showPage('landing-page')">🔙 Back to Home</a>
+            </form>
+        </div>
+    </div>
+
+    <div id="dashboard-page">
+        <div class="dashboard-header neu-card">
+            <h2>Welcome, Teacher! 👋</h2>
+            <button class="neu-btn" style="color: #e74c3c;" onclick="logout()">Logout</button>
+        </div>
+        <div class="dashboard-content neu-card">
+            <h3 style="color: #0056b3; margin-bottom: 15px;">Dashboard Overview</h3>
+            <p style="color: #666; line-height: 1.6;">
+                Aapka login successful ho gaya hai! Ye apka Neumorphism style dashboard hai.<br>
+                Yahan par aap Students list, Attendance, aur baki features ke cards add kar sakte hain.
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Shuru me landing page dikhana hai, baki hide karna hai
+        document.getElementById('landing-page').style.display = 'block';
+        document.getElementById('login-page').style.display = 'none';
+        document.getElementById('dashboard-page').style.display = 'none';
+
+        // Page Switch karne ka function
+        function showPage(pageId) {
+            document.getElementById('landing-page').style.display = 'none';
+            document.getElementById('login-page').style.display = 'none';
+            document.getElementById('dashboard-page').style.display = 'none';
+            
+            // Login page ke liye flex use kiya hai taaki wo center me rahe
+            document.getElementById(pageId).style.display = pageId === 'login-page' ? 'flex' : 'block';
+        }
+
+        // Login check karne ka function
+        function handleLogin(event) {
+            event.preventDefault(); 
+
+            const enteredEmail = document.getElementById('email').value;
+            const enteredPass = document.getElementById('password').value;
+
+            // Aapka Secret Data
+            const secretEmail = "tiwarijidubey123@gmail.com";
+            const secretPass = "pandit@ak90";
+
+            if(enteredEmail === secretEmail && enteredPass === secretPass) {
+                document.getElementById('email').value = ''; 
+                document.getElementById('password').value = '';
+                showPage('dashboard-page');
+            } else {
+                alert("Galat Email ya Password! Kripya sahi details dalein.");
+            }
+        }
+
+        // Logout function
+        function logout() {
+            showPage('landing-page');
+        }
+    </script>
 
 </body>
 </html>
