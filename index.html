@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Institute Management System</title>
+    <title>EduManage - Glassmorphism Login</title>
     <style>
-        /* बेसिक रीसेट और फॉन्ट */
+        /* बेसिक रीसेट */
         * {
             margin: 0;
             padding: 0;
@@ -13,266 +13,385 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
+        /* शानदार ग्रेडिएंट बैकग्राउंड */
         body {
-            background-color: #f4f7f6;
-            color: #333;
-        }
-
-        /* नेविगेशन बार डिज़ाइन */
-        header {
-            background-color: #2c3e50;
-            color: #fff;
-            padding: 15px 50px;
+            background: linear-gradient(135deg, #8e2de2, #4a00e0);
+            height: 100vh;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            overflow: hidden;
+            position: relative;
         }
 
-        header h1 {
-            font-size: 24px;
+        /* बैकग्राउंड में तैरते हुए शेप्स (ताकि कांच का इफ़ेक्ट दिखे) */
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(2px);
+        }
+
+        .shape1 {
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(to right, #ff512f, #dd2476);
+            top: 15%;
+            left: 25%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .shape2 {
+            width: 250px;
+            height: 250px;
+            background: linear-gradient(to right, #00c9ff, #92fe9d);
+            bottom: 10%;
+            right: 25%;
+            animation: float 8s ease-in-out infinite reverse;
+        }
+
+        /* एनिमेशन */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* 🌟 मेन ग्लासमॉर्फिज़्म बॉक्स 🌟 */
+        .glass-box {
+            width: 400px;
+            background: rgba(255, 255, 255, 0.1); /* हल्का सफेद रंग */
+            backdrop-filter: blur(15px); /* कांच वाला ब्लर इफ़ेक्ट */
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.3); /* चमकदार किनारा */
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            color: white;
+        }
+
+        .glass-box h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            font-weight: 600;
             letter-spacing: 1px;
         }
 
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 20px;
+        /* इनपुट फील्ड्स */
+        .input-group {
+            margin-bottom: 20px;
+            text-align: left;
         }
 
-        nav ul li a {
-            color: #fff;
-            text-decoration: none;
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
             font-weight: 500;
-            padding: 8px 15px;
-            border-radius: 4px;
-            transition: background 0.3s;
         }
 
-        nav ul li a:hover {
-            background-color: #34495e;
-        }
-
-        .login-btn {
-            background-color: #3498db;
+        .input-group input, .input-group select {
+            width: 100%;
+            padding: 12px 15px;
+            background: rgba(255, 255, 255, 0.15); /* इनपुट भी कांच जैसा */
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            outline: none;
             color: white;
-            padding: 8px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: bold;
+            font-size: 15px;
             transition: 0.3s;
         }
 
-        .login-btn:hover {
-            background-color: #2980b9;
+        /* प्लेसहोल्डर का रंग */
+        .input-group input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
         }
 
-        /* हीरो सेक्शन (Main Banner) */
-        .hero {
-            text-align: center;
-            padding: 80px 20px;
-            background: linear-gradient(135deg, #3498db, #2c3e50);
-            color: white;
+        /* क्लिक करने पर इनपुट का बॉर्डर चमकेगा */
+        .input-group input:focus, .input-group select:focus {
+            background: rgba(255, 255, 255, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.6);
         }
 
-        .hero h2 {
-            font-size: 40px;
-            margin-bottom: 15px;
+        .input-group select option {
+            color: black; /* ड्रॉपडाउन के अंदर का टेक्स्ट काला रखा है ताकि साफ दिखे */
         }
 
-        .hero p {
-            font-size: 18px;
-            margin-bottom: 30px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .hero button {
-            padding: 12px 30px;
-            font-size: 16px;
-            background-color: #e74c3c;
-            color: white;
+        /* सबमिट बटन */
+        .login-btn {
+            width: 100%;
+            padding: 12px;
+            background: white;
+            color: #4a00e0;
             border: none;
-            border-radius: 25px;
-            cursor: pointer;
+            border-radius: 8px;
+            font-size: 16px;
             font-weight: bold;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-            transition: transform 0.3s;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 10px;
         }
 
-        .hero button:hover {
-            transform: scale(1.05);
-            background-color: #c0392b;
+        .login-btn:hover {
+            background: rgba(255, 255, 255, 0.8);
+            transform: translateY(-2px);
         }
 
-        /* फीचर्स सेक्शन (Grid Layout for multiple cards) */
-        .features-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 60px 20px;
+        /* नीचे का छोटा टेक्स्ट */
+        .links {
+            margin-top: 20px;
+            font-size: 13px;
         }
 
-        .section-title {
-            text-align: center;
-            font-size: 32px;
-            color: #2c3e50;
-            margin-bottom: 40px;
-        }
-
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-        }
-
-        .card {
-            background-color: white;
-            padding: 25px 20px;
-            border-radius: 10px;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-            transition: transform 0.3s, box-shadow 0.3s;
-            border-bottom: 4px solid #3498db;
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 25px rgba(0,0,0,0.15);
-        }
-
-        .card .icon {
-            font-size: 40px;
-            margin-bottom: 15px;
-        }
-
-        .card h3 {
-            color: #2c3e50;
-            margin-bottom: 10px;
-            font-size: 18px;
-        }
-
-        .card p {
-            color: #7f8c8d;
-            font-size: 14px;
-            line-height: 1.5;
-        }
-
-        /* फुटर */
-        footer {
-            background-color: #2c3e50;
+        .links a {
             color: white;
-            text-align: center;
-            padding: 20px;
-            margin-top: 40px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .links a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
 
-    <!-- नेविगेशन बार -->
-    <header>
-        <h1>🎓 EduManage</h1>
-        <nav>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#features">Features</a></li>
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </nav>
-        <button class="login-btn">Login Portal</button>
-    </header>
+    <!-- बैकग्राउंड के डिज़ाइन (Circles) -->
+    <div class="shape shape1"></div>
+    <div class="shape shape2"></div>
 
-    <!-- हीरो सेक्शन -->
-    <section class="hero">
-        <h2>Smart Institute Management System</h2>
-        <p>A complete digital solution for your college. Streamline academics, administration, and communication all in one centralized portal.</p>
-        <button>Explore Dashboard</button>
-    </section>
+    <!-- ग्लासमॉर्फिज़्म लॉगिन फॉर्म -->
+    <div class="glass-box">
+        <h2>🎓 EduManage</h2>
+        <p style="margin-bottom: 25px; font-size: 14px; opacity: 0.8;">Welcome back! Please login to your account.</p>
 
-    <!-- फीचर्स सेक्शन -->
-    <section class="features-container" id="features">
-        <h2 class="section-title">Core Modules</h2>
-        
-        <div class="features">
-            <!-- 1. Student List -->
-            <div class="card">
-                <div class="icon">📋</div>
-                <h3>Student Directory</h3>
-                <p>Maintain and manage a complete, searchable list of all enrolled students and their basic profiles.</p>
+        <form>
+            <div class="input-group">
+                <label for="role">Login As</label>
+                <select id="role">
+                    <option value="student">Student</option>
+                    <option value="teacher">Teacher / Faculty</option>
+                    <option value="admin">Admin</option>
+                </select>
             </div>
 
-            <!-- 2. Attendance -->
-            <div class="card">
-                <div class="icon">📅</div>
-                <h3>Attendance</h3>
-                <p>Track daily student and staff attendance digitally with automated monthly reports.</p>
+            <div class="input-group">
+                <label for="email">Email / ID</label>
+                <input type="text" id="email" placeholder="Enter your ID or Email" required>
             </div>
 
-            <!-- 3. Course & Batch -->
-            <div class="card">
-                <div class="icon">🏫</div>
-                <h3>Course & Batches</h3>
-                <p>Organize academic structures by assigning students to specific courses, years, and batches.</p>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter your password" required>
             </div>
 
-            <!-- 4. Lesson Planning -->
-            <div class="card">
-                <div class="icon">📘</div>
-                <h3>Lesson Planning</h3>
-                <p>Empower teachers to upload syllabus timelines, study materials, and daily lesson plans.</p>
-            </div>
+            <button type="submit" class="login-btn">Secure Login</button>
+        </form>
 
-            <!-- 5. Student Performance -->
-            <div class="card">
-                <div class="icon">📈</div>
-                <h3>Performance</h3>
-                <p>Analyze academic growth with detailed metrics, results tracking, and progress charts.</p>
-            </div>
-
-            <!-- 6. Fees & Scholarship -->
-            <div class="card">
-                <div class="icon">🏆</div>
-                <h3>Fees & Scholarship</h3>
-                <p>Manage fee collections, track pending dues, and process student scholarship applications.</p>
-            </div>
-
-            <!-- 7. Certificate Management -->
-            <div class="card">
-                <div class="icon">🎓</div>
-                <h3>Certificates</h3>
-                <p>Automatically generate and issue transfer certificates, mark sheets, and degree documents.</p>
-            </div>
-
-            <!-- 8. Event Management -->
-            <div class="card">
-                <div class="icon">🎪</div>
-                <h3>Event Management</h3>
-                <p>Schedule college fests, seminars, and holidays in the centralized institutional calendar.</p>
-            </div>
-
-            <!-- 9. Chat System -->
-            <div class="card">
-                <div class="icon">💬</div>
-                <h3>Internal Chat</h3>
-                <p>Secure communication channel for students to resolve queries with teachers directly.</p>
-            </div>
-
-            <!-- 10. Email Notifications -->
-            <div class="card">
-                <div class="icon">📧</div>
-                <h3>Email Alerts</h3>
-                <p>Send automated OTPs, fee reminders, and important announcements directly via email.</p>
-            </div>
+        <div class="links">
+            <a href="#">Forgot Password?</a> | <a href="#">Help & Support</a>
         </div>
-    </section>
+    </div>
 
-    <!-- फुटर -->
-    <footer>
-        <p>&copy; 2026 EduManage System | Developed for College Project</p>
-    </footer>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduManage - Glassmorphism Login</title>
+    <style>
+        /* बेसिक रीसेट */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* शानदार ग्रेडिएंट बैकग्राउंड */
+        body {
+            background: linear-gradient(135deg, #8e2de2, #4a00e0);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* बैकग्राउंड में तैरते हुए शेप्स (ताकि कांच का इफ़ेक्ट दिखे) */
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(2px);
+        }
+
+        .shape1 {
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(to right, #ff512f, #dd2476);
+            top: 15%;
+            left: 25%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .shape2 {
+            width: 250px;
+            height: 250px;
+            background: linear-gradient(to right, #00c9ff, #92fe9d);
+            bottom: 10%;
+            right: 25%;
+            animation: float 8s ease-in-out infinite reverse;
+        }
+
+        /* एनिमेशन */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* 🌟 मेन ग्लासमॉर्फिज़्म बॉक्स 🌟 */
+        .glass-box {
+            width: 400px;
+            background: rgba(255, 255, 255, 0.1); /* हल्का सफेद रंग */
+            backdrop-filter: blur(15px); /* कांच वाला ब्लर इफ़ेक्ट */
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.3); /* चमकदार किनारा */
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            color: white;
+        }
+
+        .glass-box h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        /* इनपुट फील्ड्स */
+        .input-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .input-group input, .input-group select {
+            width: 100%;
+            padding: 12px 15px;
+            background: rgba(255, 255, 255, 0.15); /* इनपुट भी कांच जैसा */
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            outline: none;
+            color: white;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        /* प्लेसहोल्डर का रंग */
+        .input-group input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* क्लिक करने पर इनपुट का बॉर्डर चमकेगा */
+        .input-group input:focus, .input-group select:focus {
+            background: rgba(255, 255, 255, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+        }
+
+        .input-group select option {
+            color: black; /* ड्रॉपडाउन के अंदर का टेक्स्ट काला रखा है ताकि साफ दिखे */
+        }
+
+        /* सबमिट बटन */
+        .login-btn {
+            width: 100%;
+            padding: 12px;
+            background: white;
+            color: #4a00e0;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 10px;
+        }
+
+        .login-btn:hover {
+            background: rgba(255, 255, 255, 0.8);
+            transform: translateY(-2px);
+        }
+
+        /* नीचे का छोटा टेक्स्ट */
+        .links {
+            margin-top: 20px;
+            font-size: 13px;
+        }
+
+        .links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .links a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- बैकग्राउंड के डिज़ाइन (Circles) -->
+    <div class="shape shape1"></div>
+    <div class="shape shape2"></div>
+
+    <!-- ग्लासमॉर्फिज़्म लॉगिन फॉर्म -->
+    <div class="glass-box">
+        <h2>🎓 EduManage</h2>
+        <p style="margin-bottom: 25px; font-size: 14px; opacity: 0.8;">Welcome back! Please login to your account.</p>
+
+        <form>
+            <div class="input-group">
+                <label for="role">Login As</label>
+                <select id="role">
+                    <option value="student">Student</option>
+                    <option value="teacher">Teacher / Faculty</option>
+                    <option value="admin">Admin</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label for="email">Email / ID</label>
+                <input type="text" id="email" placeholder="Enter your ID or Email" required>
+            </div>
+
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter your password" required>
+            </div>
+
+            <button type="submit" class="login-btn">Secure Login</button>
+        </form>
+
+        <div class="links">
+            <a href="#">Forgot Password?</a> | <a href="#">Help & Support</a>
+        </div>
+    </div>
 
 </body>
 </html>
