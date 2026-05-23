@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Institute Management System</title>
+    <style>
+        /* बेसिक रीसेट और फॉन्ट */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f4f7f6;
+            color: #333;
+        }
+
+        /* नेविगेशन बार डिज़ाइन */
+        header {
+            background-color: #2c3e50;
+            color: #fff;
+            padding: 15px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 24px;
+            letter-spacing: 1px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 15px;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+
+        nav ul li a:hover {
+            background-color: #34495e;
+        }
+
+        .login-btn {
+            background-color: #3498db;
+            color: white;
+            padding: 8px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .login-btn:hover {
+            background-color: #2980b9;
+        }
+
+        /* हीरो सेक्शन (Main Banner) */
+        .hero {
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+            color: white;
+        }
+
+        .hero h2 {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero button {
+            padding: 12px 30px;
+            font-size: 16px;
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+        }
+
+        .hero button:hover {
+            transform: scale(1.05);
+            background-color: #c0392b;
+        }
+
+        /* फीचर्स सेक्शन (Grid Layout for multiple cards) */
+        .features-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            color: #2c3e50;
+            margin-bottom: 40px;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background-color: white;
+            padding: 25px 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-bottom: 4px solid #3498db;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 25px rgba(0,0,0,0.15);
+        }
+
+        .card .icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .card p {
+            color: #7f8c8d;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        /* फुटर */
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- नेविगेशन बार -->
+    <header>
+        <h1>🎓 EduManage</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+        <button class="login-btn">Login Portal</button>
+    </header>
+
+    <!-- हीरो सेक्शन -->
+    <section class="hero">
+        <h2>Smart Institute Management System</h2>
+        <p>A complete digital solution for your college. Streamline academics, administration, and communication all in one centralized portal.</p>
+        <button>Explore Dashboard</button>
+    </section>
+
+    <!-- फीचर्स सेक्शन -->
+    <section class="features-container" id="features">
+        <h2 class="section-title">Core Modules</h2>
+        
+        <div class="features">
+            <!-- 1. Student List -->
+            <div class="card">
+                <div class="icon">📋</div>
+                <h3>Student Directory</h3>
+                <p>Maintain and manage a complete, searchable list of all enrolled students and their basic profiles.</p>
+            </div>
+
+            <!-- 2. Attendance -->
+            <div class="card">
+                <div class="icon">📅</div>
+                <h3>Attendance</h3>
+                <p>Track daily student and staff attendance digitally with automated monthly reports.</p>
+            </div>
+
+            <!-- 3. Course & Batch -->
+            <div class="card">
+                <div class="icon">🏫</div>
+                <h3>Course & Batches</h3>
+                <p>Organize academic structures by assigning students to specific courses, years, and batches.</p>
+            </div>
+
+            <!-- 4. Lesson Planning -->
+            <div class="card">
+                <div class="icon">📘</div>
+                <h3>Lesson Planning</h3>
+                <p>Empower teachers to upload syllabus timelines, study materials, and daily lesson plans.</p>
+            </div>
+
+            <!-- 5. Student Performance -->
+            <div class="card">
+                <div class="icon">📈</div>
+                <h3>Performance</h3>
+                <p>Analyze academic growth with detailed metrics, results tracking, and progress charts.</p>
+            </div>
+
+            <!-- 6. Fees & Scholarship -->
+            <div class="card">
+                <div class="icon">🏆</div>
+                <h3>Fees & Scholarship</h3>
+                <p>Manage fee collections, track pending dues, and process student scholarship applications.</p>
+            </div>
+
+            <!-- 7. Certificate Management -->
+            <div class="card">
+                <div class="icon">🎓</div>
+                <h3>Certificates</h3>
+                <p>Automatically generate and issue transfer certificates, mark sheets, and degree documents.</p>
+            </div>
+
+            <!-- 8. Event Management -->
+            <div class="card">
+                <div class="icon">🎪</div>
+                <h3>Event Management</h3>
+                <p>Schedule college fests, seminars, and holidays in the centralized institutional calendar.</p>
+            </div>
+
+            <!-- 9. Chat System -->
+            <div class="card">
+                <div class="icon">💬</div>
+                <h3>Internal Chat</h3>
+                <p>Secure communication channel for students to resolve queries with teachers directly.</p>
+            </div>
+
+            <!-- 10. Email Notifications -->
+            <div class="card">
+                <div class="icon">📧</div>
+                <h3>Email Alerts</h3>
+                <p>Send automated OTPs, fee reminders, and important announcements directly via email.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- फुटर -->
+    <footer>
+        <p>&copy; 2026 EduManage System | Developed for College Project</p>
+    </footer>
+
+</body>
+</html>
